@@ -21,9 +21,7 @@ from requests import get, utils     # импортируем функции из
 
 
 def currency_rates(code):
-    """
-    Принимает буквенный код валюты, возвращает список данных курса, стоимость валюты и дату обновления курса
-    """
+    """Принимает буквенный код валюты, возвращает список данных курса, стоимость валюты и дату обновления курса"""
     resp = get('http://www.cbr.ru/scripts/XML_daily.asp')   # забираем данные с сайта
     encode = utils.get_encoding_from_headers(resp.headers)  # ищем кодировку
     valute_string = resp.content.decode(encoding=encode)    # декодируем контент
