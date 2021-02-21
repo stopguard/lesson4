@@ -6,3 +6,16 @@
     > python task_4_5.py USD
     75.18, 2020-09-05
 """
+from sys import argv                    # импортируем список аргументов запуска
+
+from question_3 import currency_rates   # импортируем функцию из предыдущего задания
+
+if len(argv) < 2:                       # если не были введены аргументы запуска
+    print('Не введён параметр запуска')     # выходим из функции
+else:
+    # вызываем функцию попутно преобразовывая регистр символов:
+    result, cur_rate, date_of_rate = currency_rates(argv[1].upper())
+    # собираем результат в строку:
+    txt_rate = f'{result[1]} {result[2]} = {result[3]} рублей.\n1 {result[0]} стоит {cur_rate} RUR.' \
+               f'\nДата обновления курса {date_of_rate.day:0>2}.{date_of_rate.month:0>2}.{date_of_rate.year}г.'
+    print(txt_rate)  # вывод результата
