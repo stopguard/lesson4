@@ -25,6 +25,7 @@ def currency_rates(code):
     resp = get('http://www.cbr.ru/scripts/XML_daily.asp')   # забираем данные с сайта
     encode = utils.get_encoding_from_headers(resp.headers)  # ищем кодировку
     valute_string = resp.content.decode(encoding=encode)    # декодируем контент
+    resp.close()
     # выдёргиваем из контента строку с датой:
     val_curs_date = valute_string[valute_string.find('Date="') + 6:valute_string.find('Date="') + 16].split('.')
     # и преобразовываем ее в формат даты:
